@@ -7,11 +7,12 @@ LABEL maintainer="haniyama_wataru@sgk.jp"
 
 RUN apt-get update && \
     apt-get install -y python python-dev python-pip python-virtualenv libgl1-mesa-glx libxcomposite1 calibre && \
-    npm install --global gitbook-cli gitbook-pdfgen  &&\
+    npm install --global gitbook-cli gitbook-pdfgen svgexport &&\
     gitbook fetch ${VERSION}
 
-RUN mkdir /home/node/book
-WORKDIR /home/node/book
+EXPOSE 4000
 
-CMD gitbook install
-ENTRYPOINT ["gitbook","pdf"]
+RUN mkdir /book
+WORKDIR /book
+
+ENTRYPOINT ["gitbook","--help"]
