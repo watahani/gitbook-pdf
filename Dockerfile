@@ -5,14 +5,28 @@ ARG VERSION=3.2.3
 LABEL version=$VERSION
 LABEL maintainer="haniyama_wataru@sgk.jp"
 
-RUN apt-get update && \
-    apt-get install -y python python-dev python-pip python-virtualenv libgl1-mesa-glx libxcomposite1 calibre && \
+RUN mkdir -p /usr/share/man/man1 && \
+    (echo "deb http://http.debian.net/debian jessie-backports main" > /etc/apt/sources.list.d/backports.list) && \
+    apt-get update -y && \
+    apt-get install -t jessie-backports openjdk-8-jdk -y &&\
+    apt-get install -y python\
+    python-dev python-pip python-virtualenv libgl1-mesa-glx libxcomposite1\
+    git calibre graphviz && \
+    apt-get autoremove -y &&\
     npm install --global gitbook-cli gitbook-pdfgen svgexport &&\
-    gitbook fetch ${VERSION}
+    apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+    
+# install ipafont
+RUN apt-get update -y &&\
+    apt-get install -y fonts-ipafont &&\
+    apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+
+# fetch gitbook
+RUN    gitbook fetch ${VERSION}
 
 EXPOSE 4000
 
 RUN mkdir /book
 WORKDIR /book
 
-ENTRYPOINT ["gitbook","--help"]
+CMD ["gitbook","--help"]
