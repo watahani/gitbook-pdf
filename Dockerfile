@@ -15,10 +15,15 @@ RUN mkdir -p /usr/share/man/man1 && \
     apt-get autoremove -y &&\
     npm install --global gitbook-cli gitbook-pdfgen svgexport &&\
     apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
-    
+
 # install ipafont
 RUN apt-get update -y &&\
     apt-get install -y fonts-ipafont &&\
+    apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+
+# install noto font
+RUN apt-get update -y &&\
+    apt-get install -y fonts-noto &&\
     apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
 # fetch gitbook
