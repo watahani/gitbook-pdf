@@ -26,6 +26,9 @@ RUN apt-get update -y &&\
     apt-get install -y fonts-noto &&\
     apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
+# for windows environment
+RUN npm config no-bin-links true
+
 # fetch gitbook
 RUN    gitbook fetch ${VERSION}
 
