@@ -1,4 +1,4 @@
-# gitbook-pd
+# gitbook-pdf
 
 gitbook Docker image for Japanese environment.
 
