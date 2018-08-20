@@ -28,7 +28,6 @@ module.exports = {
     
     pluginsConfig: {},
 
-    "title": "WebAuthentication本",
     "styles": {
         "website": "styles/website.css",
         "pdf": "styles/pdf.css"
