@@ -18,7 +18,7 @@ RUN mkdir -p /usr/share/man/man1 && \
 
 # install fonts
 RUN apt-get update -y &&\
-    apt-get install -y fonts-ipafont fonts-ipaexfont fonts-noto &&\
+    apt-get install -y fonts-ipafont fonts-ipaexfont fonts-noto fonts-noto-cjk fonts-noto-mono fonts-noto-unhinted&&\
     apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
 # for windows environment
