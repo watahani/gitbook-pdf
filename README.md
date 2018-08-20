@@ -14,7 +14,7 @@ docker run --rm -v $(pwd)/sample:/book hwataru/gitbook-pdf gitbook install
 # build pdf
 docker run --rm -v $(pwd)/sample:/book hwataru/gitbook-pdf gitbook pdf
 
-# buuild epub
+# build epub
 docker run --rm -v $(pwd)/sample:/book hwataru/gitbook-pdf gitbook epub
 
 # serve web page
