@@ -16,20 +16,14 @@ RUN mkdir -p /usr/share/man/man1 && \
     npm install --global gitbook-cli gitbook-pdfgen svgexport &&\
     apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
-# install ipafont
+# install fonts
 RUN apt-get update -y &&\
-    apt-get install -y fonts-ipafont &&\
-    apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
-
-# install noto font
-RUN apt-get update -y &&\
-    apt-get install -y fonts-noto &&\
+    apt-get install -y fonts-ipafont fonts-ipaexfont fonts-noto &&\
     apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
 # for windows environment
 RUN npm config set no-bin-links true
 
-# fetch gitbook
 RUN    gitbook fetch ${VERSION}
 
 EXPOSE 4000
